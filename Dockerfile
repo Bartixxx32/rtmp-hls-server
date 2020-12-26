@@ -110,6 +110,12 @@ COPY conf/nginx.conf /etc/nginx/nginx.conf
 # Copy  html players to container
 COPY players /usr/local/nginx/html/players
 
+RUN mkdir /mnt/hls
+RUN mkdir /mnt/vod
+RUN chown -R www-data:www-data /mnt/hls
+RUN chown -R www-data:www-data /mnt/vod
+RUN chmod -R 777 /mnt/*
+
 EXPOSE 1935
 EXPOSE 8080
 
